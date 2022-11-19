@@ -51,7 +51,7 @@ async def picture(file: bytes = File()):
     return StreamingResponse(printPicture, media_type="image/jpeg")
 
 
-2
+
 fake_users_db = {
     "uzytkownik123": {
         "username": "uzytkownik123",
@@ -88,8 +88,7 @@ def get_user(db, username: str):
 
 
 def fake_decode_token(token):
-    # This doesn't provide any security at all
-    # Check the next version
+   
     user = get_user(fake_users_db, token)
     return user
 
@@ -130,4 +129,5 @@ async def read_users_me(current_user: User = Depends(get_current_active_user)):
 
 @app.get("/time")
 async def get_time(current_user: User = Depends(get_current_user)):
+    """login: uzytkownik123, password: password"""
     return datetime.now().strftime("%H:%M:%S")
